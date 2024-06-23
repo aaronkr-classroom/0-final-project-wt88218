@@ -1,0 +1,55 @@
+<!-- views/courses/index.ejs -->
+
+<main class="">
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+      <div class="pt-5 pb-5">
+        <h1>fitnesse</h1>
+        <p>Here are all our current fitness offerings.</p>
+  
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+  <% fitnesses.forEach(fitness => { %>
+    <tr>
+      <td>
+        <a href="<%= `/fitnesses/${fitness._id}` %>">
+          <%= fitness.title %>
+        </a>
+      </td>
+      <td><%= fitness.description %></td>
+      <td>
+        <a href="<%= `/fitnesses/${fitness._id}/edit` %>">Edit</a>
+      </td>
+      <td>
+        <a href="<%= `/fitnesses/${fitness._id}/delete?_method=DELETE` %>"
+           onclick="return confirm('Are you sure you want to delete this record?')">
+          Delete
+        </a>
+      </td>
+    </tr>
+  <% }) %>
+</tbody>
+
+        </table>
+  
+        <div class="mt-5 text-center">
+          <a href="/fitnesses/new" class="btn btn-primary">Add New fitness</a>
+          <a
+            href="/"
+            class="btn ut-red disabled"
+            role="button"
+            aria-disabled="true"
+            >Delete All fitnesse</a
+          >
+        </div>
+      </div>
+    </div>
+  </main>
+  
